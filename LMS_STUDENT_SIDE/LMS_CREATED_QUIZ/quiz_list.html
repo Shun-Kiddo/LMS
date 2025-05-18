@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="quiz_list_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>LMS - Attempt Quiz</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html"><img src="/LMS_images/logo1.png" alt="lms-logo" class="logo"></a>
+        <nav class="menu">
+            <a class="home" href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html" id="home"></i> Home</a>
+            <a class="student" href="/LMS_STUDENT_SIDE/LMS_STUDENT_STUDENT_LIST/student_list.html" id="student"></i> Students</a>
+            <a class="active" href="/LMS_STUDENT_SIDE/LMS_STUDENT_QUIZ/student_quiz.html" id="quiz"></i> Quizzes</a>
+            <a class="activity" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ACTIVITY/student_activity.html" id="activity"></i> Activities</a>
+            <a class="announcement" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ANNOUNCEMENT/student_announcement.html" id="announcement"></i> Announcements</a>
+        </nav>
+        <div class="menu-icon" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-menu">
+            <a class="home" href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html" id="home"><i class="fas fa-home-alt"></i></a>
+            <a class="student" href="/LMS_STUDENT_SIDE/LMS_STUDENT_STUDENT_LIST/student_list.html" id="student"><i class="fas fa-user-graduate"></i></a>
+            <a class="active" href="#" id="quiz"><i class="far fa-file-alt"></i></a>
+            <a class="activity" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ACTIVITY/student_activity.html" id="activity"><i class="far fa-edit"></i></a>
+            <a class="announcement" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ANNOUNCEMENT/student_announcement.html" id="announcement"><i class="fa fa-bullhorn"></i></a>
+            <a class="profile" id="profile" href="/LMS_STUDENT_SIDE/LMS_USER_PROFILE/user_profile.html" id="profile"><i class="fas fa-user"></i></a>
+            <a class="logout" href="/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </div>
+    <h1 class="title_quiz">Quizzes</h1>
+    <div class="main-container">
+        <!-- Quiz List -->
+        <div class="quiz-list">
+            <input hidden id="lessonId">
+            <h2 class="quiz">Lesson - <span id="lessonNumber"> 123 </span></h2>
+            <p class="time">Time: <span id="time"> 00:00 </span></p>
+            <div class="quiz-container" id="quizList"></div>
+        </div>
+    </div>
+
+<script>
+    // Sidebar toggle function
+    function myFunction(x) {
+        x.classList.toggle("change");
+        sidebar.classList.toggle('active');
+    }
+
+    // Auth check and fetch student number
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    if (!token) {
+        window.location.href = "/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html";
+    }
+
+    // Logout handler
+    const logoutBtn = document.getElementById("logout");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
+            window.location.href = "/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html";
+        });
+    }
+
+    // 🔑 Fetch profile to get student_number
+
+
+    let timerInterval;
+    function startTimer(duration) {
+        let timeLeft = duration;
+        const display = document.getElementById("time");
+
+        timerInterval = setInterval(() => {
+            const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            const seconds = (timeLeft % 60).toString().padStart(2, '0');
+            display.textContent = `${minutes}:${seconds}`;
+
+            if (--timeLeft < 0) {
+                clearInterval(timerInterval);
+                alert("Time is up! Submitting your answers...");
+                submitAnswers();
+                window.location.href = "/LMS_STUDENT_SIDE/LMS_STUDENT_QUIZ/student_quiz.html";
+            }
+        }, 1000);
+    }
+
+    // Fetch quizzes
+    let timeLimitSeconds = 0;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lesson_id = urlParams.get('lesson_id');
+        timeLimitSeconds = parseInt(urlParams.get('time_limit'), 10);
+        
+        if (!lesson_id || isNaN(timeLimitSeconds)) {
+            alert("Lesson or time limit is missing!");
+            return;
+        }
+
+        startTimer(timeLimitSeconds);
+        document.getElementById("lessonId").value = lesson_id;
+        document.getElementById("lessonNumber").textContent = lesson_id;
+
+        try {
+            const response = await fetch(`http://192.168.254.150:3000/quizzes?lesson_id=${lesson_id}`);
+            const quizzes = await response.json();
+            console.log("Fetched quizzes:", quizzes);
+            renderQuizzes(quizzes);
+        } catch (error) {
+            console.error("Error fetching quizzes:", error);
+        }
+    });
+
+    // Render quizzes and options
+    function renderQuizzes(quizzes) {
+        const quizList = document.getElementById("quizList");
+        quizList.innerHTML = "";
+        const student_number = localStorage.getItem("student_number");
+        console.log("Student Number from Storage:", student_number);
+
+        if (!student_number) {
+            alert("Student number is missing!");
+            return;
+        }
+
+        if (quizzes.length === 0) {
+            quizList.innerHTML = "<p>No quizzes found for this lesson.</p>";
+            return;
+        }
+
+        quizzes.forEach((quiz, index) => {
+            let optionsHtml = "";
+
+            if (quiz.type === "multiple") {
+                let optionsArray = [];
+                if (Array.isArray(quiz.options)) {
+                    optionsArray = quiz.options;
+                } else if (typeof quiz.options === "string") {
+                    optionsArray = quiz.options.split(",").map(o => o.trim());
+                }
+
+                if (optionsArray.length > 0) {
+                    optionsHtml = optionsArray.map((option) => `
+                        <label>
+                            <input type="radio" name="question_${quiz.id}" value="${option}">
+                            ${option}
+                        </label><br>
+                    `).join("");
+                } else {
+                    optionsHtml = "<p>No options available for this question.</p>";
+                }
+            } else if (quiz.type === "truefalse") {
+                optionsHtml = `
+                    <label>
+                        <input type="radio" name="question_${quiz.id}" value="True"> True
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question_${quiz.id}" value="False"> False
+                    </label><br>
+                `;
+            }
+
+            quizList.innerHTML += `
+                <div class="quiz-item" data-id="${quiz.id}">
+                    <p><strong>${index + 1}). Question:</strong> ${quiz.question}</p>
+                    <div class="options">${optionsHtml}</div>
+                </div>
+            `;
+        });
+
+        // Submit button
+        quizList.innerHTML += `<button onclick="submitAnswers()">Submit Answers</button>`;
+    }
+
+    // Submit answers to backend
+    async function submitAnswers() {
+        const answers = [];
+        const student_number = localStorage.getItem("student_number");
+        const lessonId = document.getElementById("lessonId").value;
+
+        if (!student_number) {
+            alert("Student number is missing!");
+            return;
+        }
+
+        const quizItems = document.querySelectorAll(".quiz-item");
+
+        quizItems.forEach((item) => {
+            const questionId = item.getAttribute("data-id");
+            const selected = item.querySelector(`input[name="question_${questionId}"]:checked`);
+            answers.push({
+                quiz_id: questionId,
+                answer: selected ? selected.value : null
+            });
+        });
+
+        console.log("Student Answers:", answers);
+
+        try {
+            const response = await fetch("http://192.168.254.150:3000/student_answers", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    student_number,
+                    lesson_id: lessonId,
+                    answers
+                })
+            });
+
+            const responseData = await response.json();
+
+            if (response.ok) {
+                alert(responseData.message || "Answers submitted successfully!");
+                window.location.href = `/LMS_STUDENT_SIDE/LMS_QUIZ_RESULT/quiz_result.html?lesson_id=${lessonId}`;
+            } else {
+                alert(responseData.error || "Failed to submit answers.");
+                location.reload();
+            }
+        } catch (error) {
+            console.error("Error submitting answers:", error);
+            alert("Error submitting answers.");
+        }
+    }
+</script>
+
+    
+    <footer>
+        &copy; 2025 <a class="lms" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Learning Management System</a>. All rights reserved.
+    </footer>
+</body>
+</html>

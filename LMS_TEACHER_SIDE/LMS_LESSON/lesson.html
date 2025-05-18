@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="lesson_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>LMS - Lesson</title>
+</head>
+    <body>
+        <div class="navbar">
+            <a href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html"><img src="/LMS_images/logo1.png" alt="lms-logo" class="logo"></a>
+            <nav class="menu">
+                <a class="home" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Home</a>
+                <a class="student" href="/LMS_TEACHER_SIDE/LMS_STUDENT/student.html">Students</a>
+                <a class="active" href="/LMS_TEACHER_SIDE/LMS_LESSON/lesson.html">Quizzes</a>
+                <a class="activity" href="/LMS_TEACHER_SIDE/LMS_ACTIVITY_PAGE/activity.html">Activities</a>
+                <a class="announcement" href="/LMS_TEACHER_SIDE/LMS_ANNOUNCEMENT_PAGE/announcement.html">Announcements</a>
+            </nav>
+            <div class="menu-icon" onclick="myFunction(this)">
+                <div class="bar1"></div>    
+                <div class="bar2"></div> 
+                <div class="bar3"></div> 
+            </div>
+        </div>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <nav class="sidebar-menu">
+                <a class="home" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html" id="home"><i class="fas fa-home-alt"></i></a>
+                <a class= "student" href="/LMS_TEACHER_SIDE/LMS_STUDENT/student.html"id="student"><i class="fas fa-user-graduate"></i></a>
+                <a class="active" href="/LMS_TEACHER_SIDE/LMS_LESSON/lesson.html" id="quiz"><i class="far fa-file-alt"></i></a>
+                <a class="activity" href="/LMS_TEACHER_SIDE/LMS_ACTIVITY_PAGE/activity.html" id="activity"><i class="far fa-edit"></i></a>
+                <a class="announcement" href="/LMS_TEACHER_SIDE/LMS_ANNOUNCEMENT_PAGE/announcement.html" id="announcement"><i class="fa fa-bullhorn"></i></a>
+                <a class = "logout" href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_in.html" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </nav>
+        </div>
+        <h1 class="title_quiz">Quizzes</h1>
+        <div class="main-container">
+            <div class="lesson-form">
+                <h2 class="lesson">Create Lesson Quiz</h2>
+                <label>Lesson:</label>
+                <input type="text" id="lesson" placeholder="Enter Lesson" required>
+    
+                <label>Description:</label>
+                <textarea id="description" name="description" placeholder="Write your description..." rows="10" cols="80" required></textarea><br><br>
+        
+                <label>Attempt Allowed:</label>
+                <input type="text" id="attemptAllowed" placeholder="Enter Attempt Allowed" required> 
+
+                <label>Date Closed:</label>
+                <input type="text" id="dateLimit" placeholder="YYYY-MM-DD" required>   
+
+                <label>Time Limit:</label>
+                <input type="number" id="timeLimit" placeholder="Enter time in seconds" required>
+                
+                <button class="addquiz" onclick="addLesson()">Add Lesson</button>
+            </div> 
+
+            <!-- Quiz List -->
+            <div class="lesson-list">
+                <h2 class="lesson">Created Lesson Quiz</h2>
+                <div class="lesson-container" id="lessonList"></div>
+            </div>
+        </div>
+        <script src="lesson_script.js"></script>
+        <footer>
+            &copy; 2025 <a class="lms" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Learning Management System</a>. All rights reserved.
+        </footer>
+    </body>
+</html>

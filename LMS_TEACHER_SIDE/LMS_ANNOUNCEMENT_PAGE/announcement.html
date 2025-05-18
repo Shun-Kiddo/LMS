@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="announcement_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>LMS - Announcement</title>
+</head>
+    <body>
+        <div class="navbar">
+            <a href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html"><img src="/LMS_images/logo1.png" alt="lms-logo" class="logo"></a>
+            <nav class="menu">
+                <a class="home" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Home</a>
+                <a class="student" href="/LMS_TEACHER_SIDE/LMS_STUDENT/student.html">Students</a>
+                <a class="quiz" href="/LMS_TEACHER_SIDE/LMS_LESSON/lesson.html">Quizzes</a>
+                <a class="activity" href="/LMS_TEACHER_SIDE/LMS_ACTIVITY_PAGE/activity.html">Activities</a>
+                <a class="active" href="/LMS_TEACHER_SIDE/LMS_ANNOUNCEMENT_PAGE/announcement.html">Announcements</a>
+            </nav>
+            <div class="menu-icon" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div> 
+                <div class="bar3"></div> 
+            </div>
+        </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-menu">
+            <a class="home" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html" id="home"><i class="fas fa-home-alt"></i></a>
+            <a class= "student" href="/LMS_TEACHER_SIDE/LMS_STUDENT/student.html"id="student"><i class="fas fa-user-graduate"></i></a>
+            <a class="quiz" href="/LMS_TEACHER_SIDE/LMS_LESSON/lesson.html" id="quiz"><i class="far fa-file-alt"></i></a>
+            <a class="activity" href="/LMS_TEACHER_SIDE/LMS_ACTIVITY_PAGE/activity.html" id="activity"><i class="far fa-edit"></i></a>
+            <a class="active" href="/LMS_TEACHER_SIDE/LMS_ANNOUNCEMENT_PAGE/announcement.html" id="announcement"><i class="fa fa-bullhorn"></i></a>
+            <a class = "logout" href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_in.html" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </div>
+        <h1 class = "title_announcement">Announcement</h1>
+        <div class="main-container">
+            <div class="announcement_form"> 
+                <form id="announcementForm" enctype="multipart/form-data">
+                    <h2 class="announcement_title">Create Announcement</h2>
+                    <input type="text" id="title" name="title" placeholder="Announcement Title" required />
+                    <textarea id="content" name="content" placeholder="Write your announcement..." rows="10" cols="80" required></textarea><br><br>
+                    <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.zip"/><br><br>
+                    <button class="addAnnouncement" type="submit">Post Announcement</button>
+                </form>
+            </div> 
+
+            <!-- Announcement List -->
+            <div class="announcement_list">
+                <h2 class="announcement_title">Created Announcement</h2>
+                <div class="announcement_container" id="AnnouncementList"></div>
+            </div>
+        </div>
+        <script src="announcement_script.js"></script>
+            <footer>
+                &copy; 2025 <a class="lms"href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Learning Management System</a>. All rights reserved.
+            </footer>
+    </body>
+</html>

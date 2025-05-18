@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="student_quiz_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>LMS - Lesson</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html"><img src="/LMS_images/logo1.png" alt="lms-logo" class="logo"></a>
+        <nav class="menu">
+            <a class = "home" href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html" id="home">Home</a>
+            <a class = "student" href="/LMS_STUDENT_SIDE/LMS_STUDENT_STUDENT_LIST/student_list.html" id="student">Students</a>
+            <a class = "active" href="/LMS_STUDENT_SIDE/LMS_STUDENT_QUIZ/student_quiz.html" id="quiz">Quizzes</a>
+            <a class = "activity" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ACTIVITY/student_activity.html" id="activity">Activities</a>
+            <a class = "announcement" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ANNOUNCEMENT/student_announcement.html" id="announcement">Announcements</a>
+        </nav>
+        <div class="menu-icon" onclick="myFunction(this)">
+            <div class="bar1"></div>    
+            <div class="bar2"></div> 
+            <div class="bar3"></div> 
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-menu">
+            <a class = "home" href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html" id="home"><i class="fas fa-home-alt"></i></a>
+            <a class = "student" href="/LMS_STUDENT_SIDE/LMS_STUDENT_STUDENT_LIST/student_list.html" id="student"><i class="fas fa-user-graduate"></i></a>
+            <a class = "active" href="#" id="quiz"><i class="far fa-file-alt"></i></a>
+            <a class = "activity" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ACTIVITY/student_activity.html" id="activity"><i class="far fa-edit"></i></a>
+            <a class = "announcement" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ANNOUNCEMENT/student_announcement.html" id="announcement"><i class="fa fa-bullhorn"></i></a>
+            <a class = "profile" id="profile" href="/LMS_STUDENT_SIDE/LMS_USER_PROFILE/user_profile.html"><i class="fas fa-user"></i></a>
+            <a class = "logout" href="/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </div>
+    <h1 class="title_quiz">Quizzes</h1>
+    <div class="main-container">
+        <!-- Quiz List -->
+        <div class="lesson-list">
+            <h2 class="lesson">Take Quiz</h2>
+            <div class="lesson-container" id="lessonList"></div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(x) {
+            x.classList.toggle("change");
+            sidebar.classList.toggle('active');
+        }
+
+        const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html";
+        }
+
+        const logoutBtn = document.getElementById("logout");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem("token");
+                sessionStorage.removeItem("token");
+                window.location.href = "/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html";
+            });
+        }
+        
+        async function displayLessons() {
+            const lessonList = document.getElementById("lessonList");
+            lessonList.innerHTML = "";
+
+            try {
+                const response = await fetch("http://192.168.254.150:3000/lesson", {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch lessons");
+                }
+
+                const lessons = await response.json();
+
+                if (lessons.length === 0) {
+                    lessonList.innerHTML = "<p>No lessons found.</p>";
+                    return;
+                }
+
+                lessons.forEach((lesson) => {
+                    const timeopen = new Date(lesson.date_created).toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                    });
+
+                    const dateopen = new Date(lesson.date_created).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    const timeclosed = new Date(lesson.date_limit).toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                    });
+
+                    const dateclosed = new Date(lesson.date_limit).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+ 
+                    const div = document.createElement("div");
+                    div.className = "lesson-item";
+                    div.innerHTML = `
+                        <h3 class="lesson_type">${lesson.lesson_type}</h3>
+                        <p><strong>Description:</strong> ${lesson.description}</p>
+                        <div class="time">
+                            <p><strong>Opened:</strong> ${dateopen} / ${timeopen}</p>
+                            <p><strong>Closed:</strong> ${dateclosed} / ${timeclosed}</p>
+                        </div>
+                        <p><strong>Time Limit:</strong> ${lesson.time_limit} seconds</p>
+                        <div class="lesson-actions">
+                            <button class="attempt-btn" onclick="AttemptQuiz(${lesson.lesson_id}, '${dateclosed}' , ${lesson.time_limit})">Attempt Quiz</button>
+                        </div>
+                    `;
+                    lessonList.appendChild(div);
+                });
+            } catch (error) {
+                console.error(error);
+                lessonList.innerHTML = "<p>Error loading lessons.</p>";
+            }
+        }
+        displayLessons();
+
+        function AttemptQuiz(lesson_id, dateclosed,time_limit) {
+            // Check if the date is passed to see if the quiz has closed
+            const now = new Date();
+            const closedDate = new Date(dateclosed);
+
+            if (now > closedDate) {
+                alert("Sorry, the quiz is closed.");
+                return;
+            }
+
+            // Set the flag that the student has attempted the quiz
+            localStorage.setItem(`attemptedQuiz_${lesson_id}`, 'true');
+           window.location.href = `/LMS_STUDENT_SIDE/LMS_CREATED_QUIZ/quiz_list.html?lesson_id=${lesson_id}&time_limit=${time_limit}`;
+
+        }
+        // Student Profile Link
+        async function fetchAndSetStudentProfileLink() {
+            const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+
+            if (!token) return;
+
+            try {
+                const response = await fetch("http://192.168.254.150:3000/userprofile", {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch student info");
+                }
+
+                const student = await response.json();
+
+                // Display student ID in the console
+                console.log("Logged-in Student ID:", student.student_number);  // Logs the student ID in the console
+
+                const sidebarProfileLink = document.getElementById("profile");
+                if (sidebarProfileLink) {
+                    sidebarProfileLink.href = `/LMS_STUDENT_SIDE/LMS_USER_PROFILE/user_profile.html?student_number=${student.student_number}`;
+                }
+
+            } catch (err) {
+                console.error("Error fetching logged-in student:", err);
+            }
+        }
+
+    fetchAndSetStudentProfileLink();
+
+    </script>
+
+    <footer>
+        &copy; 2025 <a class="lms" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Learning Management System</a>. All rights reserved.
+    </footer>
+</body>
+</html>

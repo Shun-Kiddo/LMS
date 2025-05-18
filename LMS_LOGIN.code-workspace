@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../LMS_LOGIN"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "LMS_LOGIN"
+	}
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/LMS_images/logo2.png">
+    <link rel="stylesheet" href="teacher_sign_in_style.css">
+    <title>LMS teacher - sign in</title>
+</head>
+    <body>
+        <div class="signin-container">
+            <form action="/teacher_signin" method="post">
+                <a href="/LMS_TEACHER_SIDE/LMS_LANDING_PAGE/teacher_landing_page.html" class = "lms"><img src="/LMS_images/logo1.png" alt="lms_logo" class="logo"></a>
+                <a href="/LMS_TEACHER_SIDE/LMS_LANDING_PAGE/teacher_landing_page.html" class = "lms">Learning Management System</a>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"  name="remember"> Remember me
+                    </label>
+                    <div class="back">
+                        <a href="/LMS_TEACHER_SIDE/LMS_LANDING_PAGE/teacher_landing_page.html">View as Guest</i></a>
+                    </div>
+                </div>
+                <input type="submit" value="Sign in">   
+                <p class="sign-up">Don't have an account? | <a href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_up.html">Sign Up</a></p>
+            </form>        
+        </div>
+        <script src="teacher_sign_in_script.js"></script>
+    </body>
+</html>

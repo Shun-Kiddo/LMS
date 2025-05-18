@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="student_announcement_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>LMS student- Announcement</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html"><img src="/LMS_images/logo1.png" alt="lms-logo" class="logo"></a>
+        <nav class="menu">
+            <a class="home" href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html">Home</a>
+            <a class="student" href="/LMS_STUDENT_SIDE/LMS_STUDENT_STUDENT_LIST/student_list.html">Students</a>
+            <a class="quiz" href="/LMS_STUDENT_SIDE/LMS_STUDENT_QUIZ/student_quiz.html">Quizzes</a>
+            <a class="activity" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ACTIVITY/student_activity.html">Activities</a>
+            <a class="active" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ANNOUNCEMENT/student_announcement.html">Announcements</a>
+        </nav>
+        <div class="menu-icon" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div> 
+            <div class="bar3"></div> 
+        </div>
+    </div>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <nav class="sidebar-menu">
+        <a class="home" href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html" id="home"><i class="fas fa-home-alt"></i></a>
+        <a class= "student" href="/LMS_STUDENT_SIDE/LMS_STUDENT_STUDENT_LIST/student_list.html"id="student"><i class="fas fa-user-graduate"></i></a>
+        <a class="quiz" href="/LMS_STUDENT_SIDE/LMS_STUDENT_QUIZ/student_quiz.html" id="quiz"><i class="far fa-file-alt"></i></a>
+        <a class="activity" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ACTIVITY/student_activity.html" id="activity"><i class="far fa-edit"></i></a>
+        <a class="active" href="/LMS_STUDENT_SIDE/LMS_STUDENT_ANNOUNCEMENT/student_announcement.html" id="announcement"><i class="fa fa-bullhorn"></i></a>
+        <a class = "profile" id="profile" href="/LMS_STUDENT_SIDE/LMS_USER_PROFILE/user_profile.html" id="profile"><i class="fas fa-user"></i></a>
+        <a class = "logout" href="/LMS_STUDENT_SIDE/LMS_STUDENT_LOGIN/1_login.html" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+    </nav>
+</div>
+    <h1 class = "title_announcement">Announcement</h1>
+    <div class="main-container">
+        <!-- Announcement List -->
+        <div class="announcement_list">
+            <!--h2 class="announcement_title">Announcement List</h2-->
+            <div class="announcement_container" id="AnnouncementList"></div>
+        </div>
+    </div>
+
+    <script src="student_announcement_script.js"></script>
+        <footer>
+            &copy; 2025 <a class="lms"href="/LMS_STUDENT_SIDE/LMS_STUDENT_HOME/student_home.html">Learning Management System</a>. All rights reserved.
+        </footer>
+</body>
+</html>

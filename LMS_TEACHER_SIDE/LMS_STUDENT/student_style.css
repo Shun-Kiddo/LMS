@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    font-family: 'Poppins',Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+body {font-family: Verdana, sans-serif; }
+img {vertical-align: middle;}
+
+/* --LMS LOGO-- */
+.logo {
+    margin-top: 8px;
+    margin-bottom: 9px;
+    height: 50px;
+    width: auto;
+    display: inline-block;
+    margin-right: -20px;
+    border-radius: 10px;
+}
+
+/* --NAVIGATION MENU-- */
+.navbar {
+    position: fixed;  /* Fixes the navbar to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 10px rgb(14, 14, 14);
+    color: #38b6ff;
+    padding: 0px 20px;
+    z-index: 10001;  /* Makes sure the navbar is above other content */
+}
+.menu {
+    display: flex;
+    gap: 10px;  /* Adds space between menu items */
+    margin-left: auto; /* Centers the menu in the navbar */
+    margin-right: auto;  /* Centers the menu in the navbar */
+    margin-bottom: -10px;
+}
+.menu a {
+    color: #38b6ff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 2px;
+    padding: 20px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+nav a:hover {
+    color: #666;
+    transition: 0.4s;
+}
+
+nav a.active{
+    color: #7ed957;
+    text-decoration:none;
+}
+
+/* --MENU ICON-- */
+.menu-icon{
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right:50px;
+}
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 3px;
+    background-color:#38b6ff;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  .change .bar1 {
+    transform: translate(0, 9px) rotate(-45deg);
+  }
+  .change .bar2 {opacity: 0;}
+
+  .change .bar3 {
+    transform: translate(0, -9px) rotate(45deg);
+  }
+  .menu-icon:hover {
+    background-color: #ffffff;
+    border-radius: 10px;
+    .bar1, .bar2, .bar3 {
+        background-color: #38b6ff;
+      }
+}
+
+/* --MAIN CONTENT CONTAINER-- */
+.main-content {
+    margin-top: 100px;
+    display: block;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 100%;
+}
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    color: #494949;
+}
+th {
+
+    color: #38b6ff;
+}
+
+.name-cell {
+    position: relative;
+    cursor: pointer;
+}
+
+.name{
+    color: #494949;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.name-cell .tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 12px;
+    position: absolute;
+    z-index: 1;
+    bottom: 80%; /* below the name */
+    left: 0px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.name-cell:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.floating-info-box {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 999;
+    font-size: 14px;
+    min-width: 220px;
+    pointer-events: none; /* Makes it easier to click outside to close */
+}
+
+.main-content .list{
+   color:#38b6ff;
+   border-bottom: 3px solid #7ed957;
+   margin-left: 400px;
+   margin-right: 400px;
+   margin-bottom: 50px;
+   text-transform: uppercase;
+   font-size: 30px;
+}
+
+.search{
+    padding:10px;
+    width:30%;
+    margin-bottom:20px;
+    display:block;
+    margin:auto; 
+    border:1px solid #ccc;
+    text-align:center;
+    border-radius:5px;
+    margin-bottom: 30px;
+}
+
+.add_Student{
+    background-color: #38b6ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    width: 10%;
+    margin-bottom: 10px;
+}
+
+.add_Student:hover {
+    background: #097df8;
+}
+button {
+    padding: 7px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+.btn-update {
+    padding: 7px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    background: #def6d4e4;
+    color:#5fa142;
+    
+}
+.btn-delete {
+    background: #ffdfdfe4;
+    color: rgb(255, 9, 9);
+}
+.btn-delete:hover {
+    background: #ff2828;
+    color:#ffffff;
+}
+.btn-update:hover {
+    background: #6da800;
+    color:#ffffff;
+}
+
+/* --SIDEBAR-- */
+.sidebar {
+    position: fixed;
+    top: 50px;
+    right: -250px;  /* Hidden by default */
+    width: 90px;
+    height: 400px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgb(101, 101, 101);
+    transition: 0.5s;
+    z-index: 1000;
+    padding-top: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.sidebar.active {
+    right: 0;  /* Show when active */
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.sidebar-menu a {
+    color:#38b6ff;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #38b6ff;
+}
+
+.sidebar-menu a:hover {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.sidebar-menu i {
+    margin-right: 15px;  /* Space between icon and text */
+}
+  
+footer {
+    background-color: white;
+    box-shadow: 0 0 10px rgb(14, 14, 14);
+    color: #38b6ff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.lms{
+    text-decoration: none;
+    color: #7ed957 !important;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 1100px) {
+
+    .logo {
+        align-items: center;
+        margin-left: -5px;
+        width: 80px;
+        height: 40px;
+    }
+
+    .menu {
+        display: none;  /* Hide the menu links on small screens */
+    }
+    .menu-icon{
+        margin-right: 40px;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 50px;
+        right: -250px;  /* Hidden by default */
+        width: 90px;
+        height: 400px;
+        background-color: #f4f4f4;
+        box-shadow: 0 0 10px rgb(101, 101, 101);
+        transition: 0.5s;
+        z-index: 1000;
+        padding-top: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+    }
+        
+    .sidebar-menu a {
+        color:#38b6ff;
+        text-decoration: none;
+        padding: 15px 20px;
+        font-size: 18px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #38b6ff;
+    }
+
+
+    .main-content .list{
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-bottom: 30px;
+        font-size: 20px;
+     }
+
+     .search{
+        padding:10px;
+        width:70%;
+        margin-bottom:20px;
+        display:block;
+        margin:auto; 
+        border:1px solid #ccc;
+        text-align:center;
+        border-radius:5px;
+        margin-bottom: 50px;
+    }
+     
+    .add_Student{
+        background-color: #38b6ff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 12px;
+        width: 30%;
+        margin-bottom: 10px;
+    }
+    
+    .add_Student:hover {
+        background: #097df8;
+    }
+
+    table {
+        width: 90%;
+    }
+    th, td {
+        font-size: 12px;
+    }
+    th {
+        font-size: 15px;
+    }
+
+    button {
+        padding: 5px 10px;
+        margin-top: 9px;
+    }
+
+    footer {
+        font-size: 13px;
+    }
+
+}
+  

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="home_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>LMS- Home</title>  
+</head>
+    <body>
+        <div class="navbar">
+            <a href="home2_page.html"><img src="/LMS_images/logo1.png" alt="lms-logo" class="logo"></a>
+            <nav class="menu">
+                <a class = "active" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html" id="home"></i> Home</a>
+                <a class = "student" href="/LMS_TEACHER_SIDE/LMS_STUDENT/student.html" id="student"></i> Students</a>
+                <a class = "quiz" href="/LMS_TEACHER_SIDE/LMS_LESSON/lesson.html" id="quiz"></i> Quizzes</a>
+                <a class = "activity" href="/LMS_TEACHER_SIDE/LMS_ACTIVITY_PAGE/activity.html" id="activity"></i> Activities</a>
+                <a class = "announcement" href="/LMS_TEACHER_SIDE/LMS_ANNOUNCEMENT_PAGE/announcement.html" id="announcement"></i> Announcements</a>
+            </nav>
+            <div class="menu-icon" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div> 
+                <div class="bar3"></div> 
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <nav class="sidebar-menu">
+                <a class = "active" href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html" id="home"><i class="fas fa-home-alt"></i></a>
+                <a class = "student" href="/LMS_TEACHER_SIDE/LMS_STUDENT/student.html" id="student"><i class="fas fa-user-graduate"></i></a>
+                <a class = "quiz" href="/LMS_TEACHER_SIDE/LMS_LESSON/lesson.html" id="quiz"><i class="far fa-file-alt"></i></a>
+                <a class = "activity" href="/LMS_TEACHER_SIDE/LMS_ACTIVITY_PAGE/activity.html" id="activity"><i class="far fa-edit"></i></a>
+                <a class = "announcement" href="/LMS_TEACHER_SIDE/LMS_ANNOUNCEMENT_PAGE/announcement.html" id="announcement"><i class="fa fa-bullhorn"></i></a>
+                <a class = "logout" href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_in.html" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </nav>
+        </div>
+
+        
+        <div class="main-content">
+            <div class="content-container">
+                <div class="text-container">
+                    <h1>Learning Management System</h1>
+                    <p>Get access to the best online resources for learning and development.</p>
+                    <!-- <a href="#" class="cta-button"><i class='fas fa-angle-right'></i></a> -->
+                </div>
+
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                    <img src="/LMS_images/lms_pic4.png" alt="lms image1" class="main-image" style="width:100%">
+                    <div class="text"></div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                    <img src="/LMS_images/lms_pic2.png" alt="lms image2" class="main-image" style="width:100%">
+                    <div class="text"></div>
+                    </div>
+                    
+                    <div class="mySlides fade">
+                    <img src="/LMS_images/lms_pic3.png" alt="lms image3" class="main-image" style="width:100%">
+                    <div class="text"></div>
+                    </div>
+                    
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>  
+            </div>
+        </div>
+        
+        <div class="feature">
+            <h2 class="heading">Learning Management System Features</h2>
+            <div class="feature-container">
+                <div class="card">
+                    <h3>Feature1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..</p>
+                </div>
+
+                <div class="card">
+                    <h3>Feature2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Feature3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Feature4</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Feature5</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Feature6</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </div>
+        
+        <script src="home_script.js"></script>
+
+        <footer>
+            &copy; 2025 <a class="lms"href="/LMS_TEACHER_SIDE/LMS_HOME_PAGE/home2_page.html">Learning Management System </a>. All rights reserved.
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS - Quiz Result</title>
+    <link rel="stylesheet" href="quiz_result_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+</head>
+<body>
+    <div class="result-container">
+        <h1>Quiz Result</h1>
+        <p>Date Submitted: <span id="dateSubmitted"></span></p>
+        <p>Lesson: <span id="lessonType"></span></p>
+        <p>Score: <span id="score"></span></p>
+        <a href="/LMS_STUDENT_SIDE/LMS_STUDENT_QUIZ/student_quiz.html">Back to Quizzes</a>
+    </div>
+
+<script>
+const lessonId = new URLSearchParams(window.location.search).get("lesson_id");
+const studentNumber = localStorage.getItem("student_number");
+
+// Fetch quiz result from backend
+fetch(`http://192.168.254.150:3000/quiz_result?lesson_id=${lessonId}&student_number=${studentNumber}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Result not found');
+    }
+    return response.json();
+  })
+  .then(data => {
+    displayResult(data);
+  })
+  .catch(error => {
+    console.error('Error loading result:', error);
+    alert('Error loading result: ' + error.message);
+  });
+
+// Function to display the quiz result on the page
+function displayResult(data) {
+ const lessonTypeElement = document.getElementById('lessonType');
+  const scoreElement = document.getElementById('score');
+  const dateSubmittedElement = document.getElementById('dateSubmitted');
+
+  lessonTypeElement.textContent = data.lesson_type;
+  scoreElement.textContent = data.score;
+  dateSubmittedElement.textContent = new Date(data.date_submitted).toLocaleString();
+}
+</script>
+
+</body>
+</html>

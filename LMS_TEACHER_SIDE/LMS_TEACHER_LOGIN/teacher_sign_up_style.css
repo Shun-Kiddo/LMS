@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    font-family: 'Poppins',Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+.signup-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #38b6ff;
+    width: 500px;
+    height: auto;
+    text-align: center;
+}
+
+.logo {
+    margin-top: 30px;
+    width: 200px;
+}
+
+.signup-container a[class = "lms"]{
+    display: block;
+    color: #38b6ff;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.back{
+    margin-right: 10px;
+}
+.forgot-password {
+    margin-left: auto;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0;
+    margin-left: -10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 5px;
+}
+
+input[type="submit"] {
+    background-color: #38b6ff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 95%;
+    margin-left: -10px;
+    margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #014ce0;
+}
+
+a {
+    color: #38b6ff;
+    text-decoration: none;
+}
+
+a[href="lms"]:hover {
+    color: #014ce0;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: #014ce0;
+    text-decoration: none;
+
+}
+
+.sign-in {
+    margin-top: 20px;
+    color: #666;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 1500px) {
+    .signup-container {
+        width: 400px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .signup-container {
+        width: 300px;
+    }
+
+    .logo {
+        margin-top: 10px;
+        width: 180px;
+    }
+
+    .signup-container a[class="lms"]{
+        display: block;
+        color: #38b6ff;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    .sign-in {
+      font-size: 15px;
+    }
+}

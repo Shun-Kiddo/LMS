@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/LMS_images/logo2.png">
+    <link rel="stylesheet" href="teacher_sign_up_style.css">
+    <title>LMS - Teacher sign up</title>
+</head>
+    <body>
+        <div class="signup-container">
+            <form id="signup-form" action="/teacher_signup" method="post">
+                <a href="/LMS_LANDING_PAGE/teacher_landing_page.html" class = "lms"><img src="/LMS_images/logo1.png" alt="lms_logo" class="logo"></a>
+                <a href="/LMS_LANDING_PAGE/teacher_landing_page.html" class = "lms">Learning Management System</a>
+                <input type="text" name="firstname" placeholder="First Name" required>
+                <input type="text" name="middlename" placeholder="Middle Name">
+                <input type="text" name="lastname" placeholder="Last Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <input type="submit" value="Sign Up">
+                <p class="sign-in">Already have an account? | <a href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_in.html">Sign In</a></p>
+            </form>        
+        </div>
+        <script src="teacher_sign_up_script.js"></script>
+    </body>
+</html>

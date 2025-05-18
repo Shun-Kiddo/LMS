@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="landing_page_style.css">
+    <link rel="icon" href="/LMS_images/logo2.png" type="icon">
+    <title>Learning Management System</title>
+</head>
+    <body>
+        <div class="navbar">
+            <a href="home.html"><img src="/LMS_images/logo1.png" alt="lms_logo" class="logo"></a>
+            <nav class="nav">
+                <a href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_in.html" class = "login">Sign in</a>
+                <a href="border">/</a>
+                <a href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_up.html" class = "sign in">Sign up</a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="content-container">
+                <div class="text-container">
+                    <h1>Learning Management System</h1>
+                    <p>Get access to the best online resources for learning and development.</p>
+                    <a href="/LMS_TEACHER_SIDE/LMS_TEACHER_LOGIN/teacher_sign_in.html" class="cta-button">Get Started <i class='fas fa-angle-right'></i></a>
+                </div>
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="/LMS_images/lms_pic4.png" alt="lms image1" class="main-image" style="width:100%">
+                        <div class="text"></div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="/LMS_images/lms_pic2.png" alt="lms image2" class="main-image" style="width:100%">
+                        <div class="text"></div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="/LMS_images/lms_pic3.png" alt="lms image3" class="main-image" style="width:100%">
+                        <div class="text"></div>
+                    </div>
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature">
+            <h2 class="heading">Learning Management System Features</h2>
+            <div class="feature-container">
+                <div class="card">
+                    <h3>Feature1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..</p>
+                </div>
+                <div class="card">
+                    <h3>Feature2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="card">
+                    <h3>Feature3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="card">
+                    <h3>Feature4</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="card">
+                    <h3>Feature5</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="card">
+                    <h3>Feature6</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            let slideIndex = 1;
+            showSlides(slideIndex);
+            setInterval(() => {
+                plusSlides(1);
+            }, 3000); //Change slide(3 seconds)
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                slides[slideIndex - 1].style.display = "block";  
+            }
+        </script>
+        <footer>
+            &copy; 2025 <a href="/LMS_TEACHER_SIDE/LMS_LANDING_PAGE/teacher_landing_page.html" class = "lms">Learning Management System </a>. All rights reserved.
+        </footer>
+    </body>
+</html>

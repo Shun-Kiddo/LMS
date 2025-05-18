@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    font-family: 'Poppins',Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+body {font-family: Verdana, sans-serif; }
+img {vertical-align: middle;}
+
+/* --LMS LOGO-- */
+.logo {
+    margin-top: 8px;
+    margin-bottom: 9px;
+    height: 50px;
+    width: auto;
+    display: inline-block;
+    margin-right: -20px;
+    border-radius: 10px;
+}
+
+/* --NAVIGATION MENU-- */
+.navbar {
+    position: fixed;  /* Fixes the navbar to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 10px rgb(14, 14, 14);
+    color: #38b6ff;
+    padding: 0px 20px;
+    z-index: 10001;  /* Makes sure the navbar is above other content */
+}
+.menu {
+    display: flex;
+    gap: 10px;  /* Adds space between menu items */
+    margin-left: auto; /* Centers the menu in the navbar */
+    margin-right: auto;  /* Centers the menu in the navbar */
+    margin-bottom: -10px;
+}
+.menu a {
+    color: #38b6ff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 2px;
+    padding: 20px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+nav a:hover {
+    color: #666;
+    transition: 0.4s;
+}
+
+nav a.active{
+    color: #7ed957;
+    text-decoration:none;
+}
+
+/* --MENU ICON-- */
+.menu-icon{
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right:50px;
+}
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 3px;
+    background-color:#38b6ff;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  .change .bar1 {
+    transform: translate(0, 9px) rotate(-45deg);
+  }
+  .change .bar2 {opacity: 0;}
+
+  .change .bar3 {
+    transform: translate(0, -9px) rotate(45deg);
+  }
+  .menu-icon:hover {
+    background-color: #ffffff;
+    border-radius: 10px;
+    .bar1, .bar2, .bar3 {
+        background-color: #38b6ff;
+      }
+}
+
+/* --SIDEBAR-- */
+.sidebar {
+    position: fixed;
+    top: 50px;
+    right: -250px;  /* Hidden by default */
+    width: 90px;
+    height: 450px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgb(101, 101, 101);
+    transition: 0.5s;
+    z-index: 1000;
+    padding-top: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.sidebar.active {
+    right: 0;  /* Show when active */
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.sidebar-menu a {
+    color:#38b6ff;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #38b6ff;
+}
+
+.sidebar-menu a:hover {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.sidebar-menu i {
+    margin-right: 15px;  /* Space between icon and text */
+}
+
+/* --CONTENT-- */
+.student_profile {
+    text-align: center;
+    margin-top: 150px;
+    text-transform: uppercase;
+}
+
+.profile_title {
+    text-align: center;
+    color:#38b6ff;
+    border-bottom: 3px solid #7ed957;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-bottom: 50px;
+    margin-top: 35px; /* Adjusted to avoid overlap with navbar */
+    display: block;
+}
+
+/* Card Style */
+.profile_card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px #38b6ff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 90px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Picture */
+.profile_picture img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #38b6ff;
+    
+}
+
+/* Info */
+.profile_info {
+    text-align: left;
+}
+
+.profile_info h3 {
+    margin-bottom: 10px;
+    color: #494949;
+}
+
+.profile_info p {
+    margin: 5px 0;
+    color: #494949;
+}
+.profile_info .mail{
+    color: #00a2ff;
+    font-size: 15px;
+    text-transform: lowercase;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.profile_info .schoolyear{
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.clickable-img img {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .clickable-img img:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 10px #38b6ff;
+}
+
+
+footer{
+    background-color: white;
+    box-shadow: 0 0 10px rgb(14, 14, 14);
+    color: #38b6ff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.lms{
+    text-decoration: none;
+    color: #7ed957 !important;
+}
+
+
+@media screen and (max-width: 1100px) {
+
+    .logo {
+        align-items: center;
+        margin-left: -5px;
+        width: 80px;
+        height: 40px;
+    }
+
+    .menu {
+        display: none;  /* Hide the menu links on small screens */
+    }
+    .menu-icon{
+        margin-right: 40px;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 50px;
+        right: -250px;  /* Hidden by default */
+        width: 90px;
+        height: 450px;
+        background-color: #f4f4f4;
+        box-shadow: 0 0 10px rgb(101, 101, 101);
+        transition: 0.5s;
+        z-index: 1000;
+        padding-top: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+    }
+        
+    .sidebar-menu a {
+        color:#38b6ff;
+        text-decoration: none;
+        padding: 15px 20px;
+        font-size: 18px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #38b6ff;
+    }
+     /* Adjust profile card on small screens */
+     .profile_card {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .profile_picture img {
+        width: 120px;
+        height: 120px;
+        margin-top: 30px;
+    }
+
+    .profile_info {
+        text-align: center;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .profile_title {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
+
+    footer {
+        font-size: 10px;
+    }
+
+}

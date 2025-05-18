@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "LMS_SIGNUP",
+			"path": "."
+		},
+		{
+			"name": "LMS_LOGIN",
+			"path": "../LMS_LOGIN"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "LMS_SIGNUP"
+	}
+}
